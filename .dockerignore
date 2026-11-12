@@ -1,0 +1,13 @@
+.git
+.github
+.venv
+venv
+__pycache__
+*.pyc
+data/
+*.csv
+*.parquet
+airflow/logs/
+metabase/data/
+superset/
+.pytest_cache/

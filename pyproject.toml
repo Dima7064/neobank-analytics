@@ -1,0 +1,17 @@
+[project]
+name = "neobank-analytics"
+version = "1.0.0"
+description = "End-to-end Analytics project for a NeoBank"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+# Игнорируем длинные строки (E501), чтобы линтер не ругался на длинный SQL
+ignore = ["E501"]
