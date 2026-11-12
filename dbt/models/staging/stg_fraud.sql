@@ -1,3 +1,4 @@
+
 {{ config(materialized='view') }}
 
 SELECT
@@ -7,5 +8,5 @@ SELECT
     toDateTime(detected_at) AS detected_at,
     fraud_type,
     toFloat64OrZero(amount) AS amount,
-    if(toString(confirmed) = 'True', 1, 0) AS is_confirmed
+    if(lower(toString(confirmed)) IN ('true', '1', 't'), 1, 0) AS is_confirmed
 FROM {{ source('raw', 'raw_fraud') }}
