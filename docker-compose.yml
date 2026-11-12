@@ -48,6 +48,7 @@ services:
       AIRFLOW__CORE__FERNET_KEY: ""
       AIRFLOW__WEBSERVER__SECRET_KEY: "neobank-secret-key-change-me"
       AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "True"
+      AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: "15"
       _AIRFLOW_WWW_USER_USERNAME: admin
       _AIRFLOW_WWW_USER_PASSWORD: admin
       _PIP_ADDITIONAL_REQUIREMENTS: >-
@@ -65,6 +66,7 @@ services:
       - ./airflow/plugins:/opt/airflow/plugins
       - ./dbt:/opt/airflow/dbt
       - ./sql:/opt/airflow/sql
+      - ./etl:/opt/airflow/etl
     command: standalone
 
 volumes:

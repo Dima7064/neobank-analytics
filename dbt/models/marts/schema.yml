@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dm_funnel
+    columns:
+      - name: reg_date
+        tests:
+          - unique
+          - not_null
+      - name: registered
+        tests:
+          - not_null
+
+  - name: dm_ltv
+    columns:
+      - name: client_id
+        tests:
+          - unique
+          - not_null
+      - name: total_gmv
+        tests:
+          - not_null

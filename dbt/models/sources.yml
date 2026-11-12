@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    database: neobank
+    schema: neobank
+    tables:
+      - name: raw_clients
+      - name: raw_transactions
+      - name: raw_accounts
+      - name: raw_cards
+      - name: raw_products
+      - name: raw_events
+      - name: raw_fraud
+      - name: raw_ab_assignments
