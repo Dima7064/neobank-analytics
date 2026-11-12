@@ -1,0 +1,15 @@
+neobank:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      schema: neobank
+      host: localhost
+      port: 8123
+      user: analyst
+      password: analyst_pass
+      secure: false
+      verify: false
+      threads: 4
+      connect_timeout: 10
+      send_receive_timeout: 300

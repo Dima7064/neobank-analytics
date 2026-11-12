@@ -34,6 +34,39 @@ services:
       CLICKHOUSE_PASSWORD: analyst_pass
       CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
 
+  airflow:
+    image: apache/airflow:2.8.4-python3.11
+    container_name: neobank_airflow
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://analyst:analyst_pass@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      AIRFLOW__CORE__FERNET_KEY: ""
+      AIRFLOW__WEBSERVER__SECRET_KEY: "neobank-secret-key-change-me"
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "True"
+      _AIRFLOW_WWW_USER_USERNAME: admin
+      _AIRFLOW_WWW_USER_PASSWORD: admin
+      _PIP_ADDITIONAL_REQUIREMENTS: >-
+        clickhouse-connect==0.7.16
+        dbt-core==1.7.17
+        dbt-clickhouse==1.7.2
+        psycopg2-binary==2.9.9
+        pandas==2.1.4
+        pyyaml==6.0.1
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./dbt:/opt/airflow/dbt
+      - ./sql:/opt/airflow/sql
+    command: standalone
+
 volumes:
   postgres_data:
   clickhouse_data:
