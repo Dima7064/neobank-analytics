@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Данные (не коммитим!)
+data/
+*.csv
+*.parquet
+*.xlsx
+*.db
+*.sqlite
+
+# Секреты
+.env
+.env.*
+secrets.yaml
+secrets.yml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.log
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Airflow
+airflow/logs/
+
+# Power BI (большие файлы)
+*.pbix
+
+# Excel (временные)
+~$*.xlsx
+
+# ML модели
+ml/models/*.joblib
+ml/models/*.pkl
