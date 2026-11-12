@@ -1,0 +1,21 @@
+# Конфигурация генератора данных NeoBank
+# Масштаб можно менять — для локального запуска 100k разумно.
+# Для портфолио 500k тоже ок, но генерация займёт больше времени.
+
+seed: 42
+
+scale:
+  clients: 100000 # сколько клиентов сгенерировать за год
+  batch_size: 10000 # размер батча при загрузке в БД
+
+period:
+  start_date: "2024-01-01"
+  end_date: "2024-12-31"
+
+database:
+  host: localhost
+  port: 5432
+  user: analyst
+  password: analyst_pass
+  dbname: neobank
+  schema: raw
